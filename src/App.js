@@ -1,7 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
-import Textform from './components/Textform';
+// import Textform from './components/Textform';
+import About from './components/About';
 
 
 
@@ -11,7 +12,8 @@ function App() {
     <Navbar title="Atharv-bar" about = "myAboutsection"/>
 
       <div className="container">
-              <Textform heading = "Enter the text to analyze" />
+              {/* <Textform heading = "Enter the text to analyze" /> */}
+              <About/>
       </div>
     </>
   );
