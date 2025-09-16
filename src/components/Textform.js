@@ -99,7 +99,7 @@ export default function Textform(props) {
   )
 }
 
-Textform.prototype = {
+Textform.PropTypes = {
     heading: PropTypes.string
 }
 Textform.defaultProps = {

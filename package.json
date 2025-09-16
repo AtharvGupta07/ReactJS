@@ -1,5 +1,4 @@
 {
-  "homepage": "https://AtharvGupta07.github.io/ReactJS",
   "name": "pratikriya",
   "version": "0.1.0",
   "private": true,
@@ -9,7 +8,6 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.8",
-    "gh-pages": "^6.3.0",
     "lorem-ipsum": "^2.0.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

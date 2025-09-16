@@ -4,13 +4,13 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Routes
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from "react-router-dom";
 
 
 
@@ -49,17 +49,17 @@ function App() {
     <>
     {/* <Navbar title="Atharv-bar" about = "myAboutsection"/> */}
 
-    {/* <Router> */}
+    <Router>
         <Navbar title='EasyText' about = "Aboutsection" mode={mode} toggleMode ={toggleMode}/>
         <Alert alert={alert}/>
         <div className="container">
-            {/* <Routes> */}
-              {/* <Route exact path="/about" element={<About />} /> */}
-              {/* <Route exact path="/home" element={<Textform showAlert={showAlert} mode={mode} />} /> */}
-              <Textform showAlert={showAlert} mode={mode} />
-            {/* </Routes> */}
+            <Routes>
+              <Route exact path="/about" element={<About />} />
+              <Route exact path="/" element={<Textform showAlert={showAlert} mode={mode} />} />
+              {/* <Textform showAlert={showAlert} mode={mode} /> */}
+            </Routes>
         </div>
-    {/* </Router> */}
+    </Router>
 
     </>
   );
