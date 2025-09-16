@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import PropTypes from 'prop-types'
 
 export default function Textform(props) {
-    const [text, setText] = useState('Enter text here.');
+    const [text, setText] = useState('');
 
     const handleDumClick = ()=>{
         console.log("Dummy text generated.");
@@ -48,22 +48,22 @@ export default function Textform(props) {
         props.showAlert("Text is Cleared", "danger");
     }
 
-    const handleCase = () => {
-        console.log("Capitalizing Everything.");
-        handleLoClick();
-        const words = text.split(" ");
-        for(let i = 0; i < words.length; i++){
-            let chars = words[i].split("");
-            if (chars.length > 0) {
-                chars[0] = chars[0].toUpperCase();
-            }
-            words[i] = chars.join("");
+const handleCase = () => {
+    console.log("Capitalizing Everything.");
+    const words = text.toLowerCase().split(" ");  // directly make lowercase
+    for (let i = 0; i < words.length; i++) {
+        let chars = words[i].split("");
+        if (chars.length > 0) {
+            chars[0] = chars[0].toUpperCase();
         }
-        const capitalText = words.join(" ");
-        setText(capitalText);
-
-        props.showAlert("First character of each leter is Captalised.", "success");
+        words[i] = chars.join("");
     }
+    const capitalText = words.join(" ");
+    setText(capitalText);
+
+    props.showAlert("First character of each letter is Capitalised.", "success");
+}
+
 
     const handleOnChange = (event )=>{
         // console.log("On change");
@@ -74,32 +74,32 @@ export default function Textform(props) {
   return (
     <>
     <div className='container' style={{color: props.mode==='light'?'black':'white'}}>
-        <h3>{props.heading} </h3>
+        <h6>Enter your text below:</h6>
         <div className="mb-3">
-        <textarea className="form-control" value={text}  onChange={handleOnChange} style={{color: props.mode==='light'?'black':'white' , backgroundColor: props.mode==='dark'?'grey':'white'}} id="myBox" rows="8"></textarea>
+        <textarea className="form-control" value={text}  onChange={handleOnChange} style={{color: props.mode==='light'?'black':'white' , backgroundColor: props.mode==='dark'?'#063963ff':'white'}} id="myBox" rows="8"></textarea>
         </div>
-        <button className='btn btn-primary mx-1' onClick={handleDumClick}>Dummy text</button>
-        <button className='btn btn-primary mx-1' onClick={handleUpClick}>Convert to upperCase</button>
-        <button className='btn btn-primary mx-1' onClick={handleLoClick}>Convert to lowerCase</button>
-        <button className='btn btn-primary mx-1' onClick={handleInvClick}>Inverse text</button>
-        <button className='btn btn-primary mx-1' onClick={handleCase}>Capitaliz every Word</button>
-        <button className='btn btn-danger mx-1' onClick={handleclrClick}>Clear text</button>
+        <button className='btn btn-primary mx-1 my-1' onClick={handleDumClick}>Dummy text</button>
+        <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleUpClick}>Convert to upperCase</button>
+        <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleLoClick}>Convert to lowerCase</button>
+        <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleInvClick}>Inverse text</button>
+        <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleCase}>Capitaliz every Word</button>
+        <button disabled={text.length===0} className='btn btn-danger mx-1 my-1' onClick={handleclrClick}>Clear text</button>
     </div>
 
     <div className='container my-3' style={{color: props.mode==='light'?'black':'white'}}>
         <h3>Your text summary</h3>
-        <p> {text.split(" ").length} words and {text.length}characters</p>
-        <p>{0.008*text.split(" ").length} Minutes read</p>
+        <p> {text.split(" ").filter((element)=>{return element.length !== 0}).length} words and {text.length}characters</p>
+        <p>{0.008*text.split(" ").filter((element)=>{return element.length !== 0}).length} Minutes read</p>
 
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.lenght>0? text : "Enter text to preview."}</p>
 
     </div>
     </>
   )
 }
 
-Textform.PropTypes = {
+Textform.propTypes = {
     heading: PropTypes.string
 }
 Textform.defaultProps = {

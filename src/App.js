@@ -50,11 +50,11 @@ function App() {
     {/* <Navbar title="Atharv-bar" about = "myAboutsection"/> */}
 
     <Router>
-        <Navbar title='EasyText' about = "Aboutsection" mode={mode} toggleMode ={toggleMode}/>
+        <Navbar title='Textutils' about = "About" mode={mode} toggleMode ={toggleMode}/>
         <Alert alert={alert}/>
         <div className="container">
             <Routes>
-              <Route exact path="/about" element={<About />} />
+              <Route exact path="/about" element={<About mode={mode}/>} />
               <Route exact path="/" element={<Textform showAlert={showAlert} mode={mode} />} />
               {/* <Textform showAlert={showAlert} mode={mode} /> */}
             </Routes>
